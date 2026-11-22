@@ -1,0 +1,26 @@
+services:
+
+  frontend:
+    build: ./templates
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build: .
+    expose:
+      - "5000"
+    volumes:
+      - app_data:/app
+    networks:
+      - app-network
+
+volumes:
+  app_data:
+
+networks:
+  app-network:
+    driver: bridge
