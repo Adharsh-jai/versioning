@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Webhook Trigger Test') {
+            steps {
+                echo 'Triggered automatically by GitHub webhook!'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'echo "Testing Jenkins CI pipeline"'
+                sh 'date'
+            }
+        }
+
+        stage('Success') {
+            steps {
+                echo 'Pipeline completed successfully!'
+            }
+        }
+    }
+}
